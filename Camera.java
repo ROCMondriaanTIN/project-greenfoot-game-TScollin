@@ -1,4 +1,4 @@
-
+                                                                       
 import greenfoot.*;
 
 /**
@@ -7,7 +7,7 @@ import greenfoot.*;
  */
 public class Camera extends Actor {
 
-    public static int SPEED = 10;
+    public static int SPEED = 15;
     private int width;
     private int height;
     private int maxX;
