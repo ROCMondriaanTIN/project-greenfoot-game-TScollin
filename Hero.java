@@ -11,14 +11,18 @@ public class Hero extends Mover {
     private final double gravity;
     private final double acc;
     private final double drag;
-    private int teller = 0;
+    public int animationCounter = 0;
+    private int frame = 1;
+    private static int teller = 1;
+    public static int coins;
+    
 
     public Hero() {
         super();
         gravity = 9.8;
         acc = 0.6;
         drag = 0.8;
-        setImage("p1.png");
+        setImage("p1_walk02.png");
     }
     private GreenfootImage run1 = new GreenfootImage("p1_walk01.png");
     private GreenfootImage run2 = new GreenfootImage("p1_walk02.png");
@@ -31,6 +35,18 @@ public class Hero extends Mover {
     private GreenfootImage run9 = new GreenfootImage("p1_walk09.png");
     private GreenfootImage run10 = new GreenfootImage("p1_walk10.png");
     private GreenfootImage run11 = new GreenfootImage("p1_walk11.png");
+    private GreenfootImage run12 = new GreenfootImage("p1_walk01.1.png");
+    private GreenfootImage run13 = new GreenfootImage("p1_walk02.1.png");
+    private GreenfootImage run14 = new GreenfootImage("p1_walk03.1.png");
+    private GreenfootImage run15 = new GreenfootImage("p1_walk04.1.png");
+    private GreenfootImage run16 = new GreenfootImage("p1_walk05.1.png");
+    private GreenfootImage run17 = new GreenfootImage("p1_walk06.1.png");
+    private GreenfootImage run18 = new GreenfootImage("p1_walk07.1.png");
+    private GreenfootImage run19 = new GreenfootImage("p1_walk08.1.png");
+    private GreenfootImage run20 = new GreenfootImage("p1_walk09.1.png");
+    private GreenfootImage run21 = new GreenfootImage("p1_walk10.1.png");
+    private GreenfootImage run22 = new GreenfootImage("p1_walk11.1.png");
+    private GreenfootImage jump1 = new GreenfootImage("p1_jump.png");
 
     @Override
     public void act() {
@@ -52,7 +68,7 @@ if (getWorld().getObjects(Hero.class).size() != 0){
 
                         
                         
-                        setLocation(300, 200);
+                        setLocation(374, 2412);
 
                         
                     } else {
@@ -76,7 +92,7 @@ if (getWorld().getObjects(Hero.class).size() != 0){
 
                         
                         
-                        setLocation(300, 200);
+                        setLocation(374, 2412);
 
                         
                     } else {
@@ -95,6 +111,24 @@ if (getWorld().getObjects(Hero.class).size() != 0){
                 return;
             }
         }
+        for (Actor actor : getIntersectingObjects(Tile.class)) {
+                    Tile tile = (Tile)actor;
+            if (tile.getImage().toString().contains("coinBronze"))
+
+            {
+                getWorld().removeObject(tile);
+                coins++;
+                return;
+            }
+        }
+        for (Actor actor : getIntersectingObjects(Tile.class)) {
+                    Tile tile = (Tile)actor;
+            if (tile.getImage().toString().contains("boxCoin"))
+
+            {
+                //hier komt de code van wat je wilt doen
+            }
+        }
         
     }
     
@@ -106,14 +140,31 @@ if (getWorld().getObjects(Hero.class).size() != 0){
     public void handleInput() {
         if (Greenfoot.isKeyDown("space") && (onGround() == true)) {
             velocityY = -15;
+            //System.out.print("hoi");
+            
+                        
         }
 
-        if (Greenfoot.isKeyDown("a")) {
+        if (Greenfoot.isKeyDown("a")|| Greenfoot.isKeyDown("Left")) {
             velocityX = -5;
-        } else if (Greenfoot.isKeyDown("d")) {
-            velocityX = 5;
+            animationCounter = animationCounter + 1;
+            
+            if (animationCounter % 6 == 0) {
+                animationLeft();
+            }
+        } else if (Greenfoot.isKeyDown("d")|| Greenfoot.isKeyDown("Right")) {
+                velocityX = 5;
+            animationCounter = animationCounter + 1;
+
+            if (animationCounter % 6 == 0) {
+                animationRight();
+            }
+            
+
         }
+
     }
+    
     
 
     public int getWidth() {
@@ -125,7 +176,11 @@ if (getWorld().getObjects(Hero.class).size() != 0){
     }
 
 private void animationRight() {
-
+if (onGround() == false) {
+                            //System.out.print("hoi");
+                setImage ("p1_jump.png");
+            }
+            else{
 
             switch (teller) {
                 
@@ -173,5 +228,56 @@ private void animationRight() {
                 default:
                     teller = 1;
             }}}
+            private void animationLeft() {
+
+
+            switch (teller) {
+                
+                case 1:
+                    setImage(run12);
+                    teller++;
+                    break;
+                case 2:
+                    setImage(run13);
+                    teller++;
+                    break;
+                case 3:
+                    setImage(run14);
+                    teller++;
+                    break;
+                case 4:
+                    setImage(run15);
+                    teller++;
+                    break;
+                case 5:
+                    setImage(run16);
+                    teller++;
+                    break;
+                case 6:
+                    setImage(run17);
+                    teller++;
+                    break;
+                case 7:
+                    setImage(run18);
+                    teller++;
+                    break;
+                case 8:
+                    setImage(run19);
+                    teller++;
+                    break;
+                case 9:
+                    setImage(run20);
+                    teller++;
+                    break;
+                case 10:
+                    setImage(run21);
+                    teller++;
+                    break;
+
+                default:
+                    teller = 1;
+            }}}
+
+
         
     
