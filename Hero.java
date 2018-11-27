@@ -1,5 +1,3 @@
-
-
 import greenfoot.*;
 
 /**
@@ -15,6 +13,7 @@ public class Hero extends Mover {
     private int frame = 1;
     private static int teller = 1;
     public static int coins;
+    public static boolean newCoin;
     
 
     public Hero() {
@@ -69,6 +68,7 @@ if (getWorld().getObjects(Hero.class).size() != 0){
                         
                         
                         setLocation(374, 2412);
+                        
 
                         
                     } else {
@@ -78,6 +78,13 @@ if (getWorld().getObjects(Hero.class).size() != 0){
                     }
                 }}}
         for (Actor enemy : getIntersectingObjects(Snail.class)) {
+            if (enemy != null) {
+                
+                getWorld().removeObject(this);
+                break;
+            }
+        }
+        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
             if (enemy != null) {
                 
                 getWorld().removeObject(this);
@@ -117,7 +124,8 @@ if (getWorld().getObjects(Hero.class).size() != 0){
 
             {
                 getWorld().removeObject(tile);
-                coins++;
+                newCoin = true;
+                
                 return;
             }
         }
@@ -138,7 +146,7 @@ if (getWorld().getObjects(Hero.class).size() != 0){
     }
 
     public void handleInput() {
-        if (Greenfoot.isKeyDown("space") && (onGround() == true)) {
+        if (Greenfoot.isKeyDown("space") || Greenfoot.isKeyDown("Up") && (onGround() == true)) {
             velocityY = -15;
             //System.out.print("hoi");
             
@@ -277,7 +285,3 @@ if (onGround() == false) {
                 default:
                     teller = 1;
             }}}
-
-
-        
-    
