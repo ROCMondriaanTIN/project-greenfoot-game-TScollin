@@ -14,5 +14,14 @@ public class StartScreen extends Mover
    {
     setImage("StartScreen.png");
    if(Greenfoot.isKeyDown("enter")){
-   getWorld().removeObject(this);}}}}
+       MyWorld.BGM.playLoop();
+   getWorld().removeObject(this);}
+   //set new 
+}
+
+
+
+}
+
+}
     

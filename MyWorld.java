@@ -1,6 +1,5 @@
 import javax.swing.JOptionPane;
 
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -10,8 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World {
     public static String levelstring;
     public static int level = 1;
+    public static boolean firstStart = true;
+    public static boolean gameoverWorld;
     public static int coinX = 50;
-
+    static GreenfootSound BGM = new GreenfootSound("bgm.wav");
+ 
     private CollisionEngine ce;
 
     /**
@@ -21,10 +23,12 @@ public class MyWorld extends World {
     public MyWorld() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1, false);
+        
         this.setBackground("bg.png");
-        /*levelstring = JOptionPane.showInputDialog("Kies een "
-                + "level (1 of 2)");
-        level = Integer.parseInt(levelstring); */
+        coinX = 50;
+       // levelstring = JOptionPane.showInputDialog("Kies een "
+       //         + "level (1 of 2)");
+      //  level = Integer.parseInt(levelstring);
 
         int[][] map = {
 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
@@ -94,23 +98,7 @@ public class MyWorld extends World {
 
                 
         };
-        int[][]map2 ={{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9,17,17,17,17,17,17,17,-1,-1,-1,-1},
-{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,2,-1,-1,-1,-1,-1,-1,-1,-1,-1,9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,-1,-1,16,-1,-1,-1,-1,-1,-1,15,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,16,-1,-1,-1,-1,-1,-1,9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,17,17,17,17,17,-1,-1,17,17,17,17,17,-1,-1,17,17,17,17,17,17,-1,-1,17,17,17,17,17,17,-1,-1,17,17,17,17,17,17,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-{11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11},
-{10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10},
-{10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10},
-};
+        
 if (level == 1){
         // Declareren en initialiseren van de TileEngine klasse om de map aan de world toe te voegen
         TileEngine te = new TileEngine(this, 60, 60, map);
@@ -120,7 +108,7 @@ if (level == 1){
         // Declareren en initialiseren van een main karakter van het spel mijne heet Hero. Deze klasse 
         // moet de klasse Mover extenden voor de camera om te werken
         Hero hero = new Hero();
-        
+        Greenfoot.playSound("bgm.wav");
       
 
         // Laat de camera een object volgen. Die moet een Mover instatie zijn of een extentie hiervan.
@@ -130,11 +118,14 @@ if (level == 1){
         addObject(camera, 374, 2412);
         
         addObject(hero, 374, 2412);
+        addObject(new Slime(), 600, 2412);
         
         //addObject(new Snail(), 3616, 3345 );
         addObject(new Snail(), 3616, 3407 );
         addObject(new Enemy(), 1170, 1428       );
-        addObject(new StartScreen(), 500, 400);
+        if (firstStart == true)
+        {addObject(new StartScreen(), 500, 400);
+        firstStart = false;}
         addObject(new Slime(), 3300, 3407);
         
         
@@ -146,39 +137,7 @@ if (level == 1){
         ce.addCollidingMover(hero);
         prepare();
     }
-    if (level == 2){
-        // Declareren en initialiseren van de TileEngine klasse om de map aan de world toe te voegen
-        TileEngine te = new TileEngine(this, 60, 60, map2);
-        // Declarenre en initialiseren van de camera klasse met de TileEngine klasse 
-        // zodat de camera weet welke tiles allemaal moeten meebewegen met de camera
-        Camera camera = new Camera(te);
-        // Declareren en initialiseren van een main karakter van het spel mijne heet Hero. Deze klasse 
-        // moet de klasse Mover extenden voor de camera om te werken
-        Hero hero = new Hero();
-        
-      
-
-        // Laat de camera een object volgen. Die moet een Mover instatie zijn of een extentie hiervan.
-        camera.follow(hero);
-
-        // Alle objecten toevoegen aan de wereld: camera, main karakter en mogelijke enemies
-        addObject(camera, 374, 2412);
-        
-        addObject(hero, 374, 612);
-        
-        //addObject(new Snail(), 3616, 3345 );
-        addObject(new Snail(), 1145, 645 );
-        addObject(new Enemy(), 1170, 1428       );
-        addObject(new StartScreen(), 500, 400);
-        
-
-        // Initialiseren van de CollisionEngine zodat de speler niet door de tile heen kan lopen.
-        // De collision engine kijkt alleen naar de tiles die de variabele solid op true hebben staan.
-        ce = new CollisionEngine(te, camera);
-        // Toevoegen van de mover instantie of een extentie hiervan
-        ce.addCollidingMover(hero);
-        prepare();
-    }
+    
     }
 
     @Override
@@ -190,6 +149,7 @@ if (level == 1){
             coinX += 50;
             Hero.newCoin = false;
         }
+       
     }
 
     /**
