@@ -10,18 +10,24 @@ public class StartScreen extends Mover
 {
 
 
-         public void act(){
+         /*public void act(){
    {
     setImage("StartScreen.png");
-   if(Greenfoot.isKeyDown("enter")){
+   if(Greenfoot.isKeyDown("enter"))
+   {  
+       
        MyWorld.BGM.playLoop();
-   getWorld().removeObject(this);}
+       getWorld().removeObject(this);
+        Greenfoot.setWorld(new LevelSelector1());
+   }*/
+     
+
    //set new 
 }
 
 
 
-}
+//}
 
-}
+//}
     

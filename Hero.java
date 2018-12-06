@@ -17,9 +17,12 @@
             public static boolean isVoltooid;
             public boolean isDood;
             public int counter;
+            public int counter2;
             public static String richting;
             public static boolean mirrored;
-        
+            public static boolean isSneller;
+            public static boolean isPowered;
+            public boolean powerUp;
             public Hero() {
                 super();
                 gravity = 9.8;
@@ -59,6 +62,11 @@
             //Greenfoot.setWorld(BeginLevel);}
             @Override
             public void act () {
+                System.out.print(counter2);
+                if (isPowered == true)
+                {
+                    lekkerWachten();
+                }
                 System.out.println(mirrored);
                 if ( isDood == true) {
                     velocityX = 0;
@@ -68,12 +76,19 @@
                     counter++;
                     
                     if(counter > 100) {
+                        if (LevelSelector1.level == 2){
                         Greenfoot.setWorld(new MyWorld());
+                    }
+                    else if (LevelSelector1.level == 1){
+                    Greenfoot.setWorld(new BeginLevel());}
+                    else if (LevelSelector1.level == 3){
+                    Greenfoot.setWorld(new Level2());}
                         
                     }
                     return;
                     
                 }
+                
                        
                 handleInput();
                 
@@ -85,6 +100,7 @@
                     velocityY = gravity;
                 }
                 applyVelocity();
+                
         if (getWorld().getObjects(Hero.class).size() != 0){
                 for (Actor snail : getIntersectingObjects(Snail.class)) {
                         if (snail != null) {
@@ -103,6 +119,8 @@
         
                             }
                         }}}
+                 
+                
                         
         
         
@@ -146,6 +164,10 @@
                 return;
    
             }
+            if (tile.getImage().toString().contains("signExit")){
+                
+                Greenfoot.setWorld(new LevelSelector1());
+            }
         }
         for (Actor actor : getIntersectingObjects(Tile.class)) {
                     Tile tile = (Tile)actor;
@@ -155,6 +177,8 @@
                 getWorld().removeObject(tile);
                 Greenfoot.playSound("coin.wav");
                 newCoin = true;
+                isPowered = true;
+                
                 
                 return;
             }
@@ -202,7 +226,7 @@
                 animationLeft();
             }
         } else if (Greenfoot.isKeyDown("d")|| Greenfoot.isKeyDown("Right")) {
-                velocityX = 5;
+            velocityX = 5;
             animationCounter = animationCounter + 1;
             mirrored = false;
              if (onGround() == false) {
@@ -216,6 +240,12 @@
             
 
         }
+        if (velocityY == 0 && velocityX == 0) {
+                 setImage("p1_front.png");
+                }
+                if (Greenfoot.isKeyDown("s") || Greenfoot.isKeyDown("Down")){
+                    setImage("p1_duck.png");
+                }
 
     }
     
@@ -337,5 +367,13 @@ if (onGround() == false) {
                     teller = 1;
             }}
         public void waiting() throws InterruptedException{
-        Thread.sleep(2000);}}
+        Thread.sleep(2000);}
+    public void lekkerWachten(){
+    while (counter2 < 50)
+                {
+                    isSneller = true;
+                    counter2 ++;
+                }isPowered = false;
+            counter2 = 0;}
+            }
             

@@ -14,6 +14,6 @@ public class CoinHUD extends Mover
      */
     public void act() 
     {
-        setImage("hud_coins.png");
+        setImage("coinBronze.png");
     }    
 }
