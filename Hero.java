@@ -208,7 +208,7 @@
                // }
 
     public void handleInput() {
-        if (Greenfoot.isKeyDown("space") || Greenfoot.isKeyDown("Up") && (onGround() == true)) {
+        if (Greenfoot.isKeyDown("space") && (onGround() == true)|| Greenfoot.isKeyDown("Up") && (onGround() == true)) {
             velocityY = -15;
             //System.out.print("hoi");
             Greenfoot.playSound("jump.wav");
