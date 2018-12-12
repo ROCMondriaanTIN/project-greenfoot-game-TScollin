@@ -23,7 +23,7 @@ public class StartScreen1 extends World
     
    if(Greenfoot.isKeyDown("enter"))
    {  
-       System.out.print("start");
+       
        MyWorld.BGM.playLoop();
        
         Greenfoot.setWorld(new LevelSelector1());

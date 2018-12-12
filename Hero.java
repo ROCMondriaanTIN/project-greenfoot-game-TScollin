@@ -62,12 +62,12 @@
             //Greenfoot.setWorld(BeginLevel);}
             @Override
             public void act () {
-                System.out.print(counter2);
+                
                 if (isPowered == true)
                 {
                     lekkerWachten();
                 }
-                System.out.println(mirrored);
+                
                 if ( isDood == true) {
                     velocityX = 0;
                     velocityY = 0;
@@ -164,8 +164,28 @@
                 return;
    
             }
+            if (tile.getImage().toString().contains("letterT")){
+            getWorld().removeObject(tile);
+        LevelSelector1.heeftT = true;}
+        if (tile.getImage().toString().contains("letterO")){
+            getWorld().removeObject(tile);
+        LevelSelector1.heeftO = true;}
+        if (tile.getImage().toString().contains("letterP")){
+            getWorld().removeObject(tile);
+        LevelSelector1.heeftP = true;}
             if (tile.getImage().toString().contains("signExit")){
-                
+                if (LevelSelector1.huidigLevel == 1)
+                {
+                    LevelSelector1.level2A = true;
+                }
+                if (LevelSelector1.huidigLevel == 2)
+                {
+                    LevelSelector1.level3A = true;
+                }
+                if (LevelSelector1.huidigLevel == 3)
+                {
+                    LevelSelector1.woordA = true;
+                }
                 Greenfoot.setWorld(new LevelSelector1());
             }
         }
@@ -185,10 +205,10 @@
         }
         for (Actor actor : getIntersectingObjects(Tile.class)) {
                     Tile tile = (Tile)actor;
-            if (tile.getImage().toString().contains("boxCoin"))
+            if (tile.getImage().toString().contains("letterT"))
 
             {
-                //hier komt de code van wat je wilt doen
+                //hier komt de code van wat je wilt doen kanker kanker
             }
         }
         
@@ -208,7 +228,7 @@
                // }
 
     public void handleInput() {
-        if (Greenfoot.isKeyDown("space") && (onGround() == true)|| Greenfoot.isKeyDown("Up") && (onGround() == true)) {
+        if (Greenfoot.isKeyDown("space")|| Greenfoot.isKeyDown("Up") && (onGround() == true)) {
             velocityY = -15;
             //System.out.print("hoi");
             Greenfoot.playSound("jump.wav");

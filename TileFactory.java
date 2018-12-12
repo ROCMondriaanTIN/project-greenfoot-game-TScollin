@@ -76,6 +76,15 @@ public class TileFactory {
                 case 16:
                 tile = new Tile("signRight.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
+                case 17:
+                tile = new Tile("letterT.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 18:
+                tile = new Tile("letterO.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 19:
+                tile = new Tile("letterP.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
                
       
                 
