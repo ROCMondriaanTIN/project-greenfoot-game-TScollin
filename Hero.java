@@ -208,7 +208,7 @@
             if (tile.getImage().toString().contains("letterT"))
 
             {
-                //hier komt de code van wat je wilt doen kanker kanker
+                //hier komt de code van wat je wilt doen
             }
         }
         
@@ -228,12 +228,13 @@
                // }
 
     public void handleInput() {
-        if (Greenfoot.isKeyDown("space")|| Greenfoot.isKeyDown("Up") && (onGround() == true)) {
+        if (Greenfoot.isKeyDown("space")|| Greenfoot.isKeyDown("Up")) {
+            if (onGround() == true){
             velocityY = -15;
             //System.out.print("hoi");
             Greenfoot.playSound("jump.wav");
                         
-        }
+        }}
 
         if (Greenfoot.isKeyDown("a")|| Greenfoot.isKeyDown("Left")) {
             velocityX = -5;

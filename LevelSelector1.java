@@ -77,10 +77,10 @@ public class LevelSelector1 extends World
 
             }
             else{
-                JOptionPane.showMessageDialog(null, "kanker sukkel.Dat is niet het juiste woord.");
+                JOptionPane.showMessageDialog(null, "Dat is niet het juiste woord.");
 
 
-            }} else{JOptionPane.showMessageDialog(null, "Level kanker nog niet beschikbaar.");}
+            }} else{JOptionPane.showMessageDialog(null, "Level nog niet beschikbaar.");}
         }
     }
 }
