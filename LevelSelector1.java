@@ -13,10 +13,15 @@ public class LevelSelector1 extends World
    public static int huidigLevel;
    public static boolean level2A;
    public static boolean level3A;
+   public static boolean level4A;
+   public static boolean level5A;
+   
    public static boolean woordA;
    public static boolean heeftT;
    public static boolean heeftO;
    public static boolean heeftP;
+   public static boolean heeftJ;
+   public static boolean heeftE;
    
 
     /**
@@ -54,6 +59,20 @@ public class LevelSelector1 extends World
          
         }
     else{JOptionPane.showMessageDialog(null, "Level nog niet beschikbaar.");}}
+    if (Greenfoot.isKeyDown("4")){
+        if (level4A){
+            level = 4;
+            huidigLevel = 4;
+            Greenfoot.setWorld(new Level4());
+        }
+    }
+    if (Greenfoot.isKeyDown("5")){
+        if (level5A){
+            level = 5;
+            huidigLevel = 5;
+            Greenfoot.setWorld(new Level5());
+        }
+    }
            if(Greenfoot.isKeyDown("3") )
      {
          if (level3A == true){
@@ -65,12 +84,14 @@ public class LevelSelector1 extends World
          
          Greenfoot.setWorld(new Level2());
          
-        }else{JOptionPane.showMessageDialog(null, "Level nog niet beschikbaar.");}}
+        }
+        
+        else{JOptionPane.showMessageDialog(null, "Level nog niet beschikbaar.");}}
         if(Greenfoot.isKeyDown("9"))
         {
-            if (woordA == true && heeftT == true && heeftO == true && heeftP == true){
-            woord = JOptionPane.showInputDialog("Dit zijn de letters: P, T, O. Welk woord is dit?");
-            if (woord.contains("top") || (woord.contains("Top")))
+            if (woordA == true && heeftT == true && heeftO == true && heeftP == true && heeftJ == true && heeftE == true){
+            woord = JOptionPane.showInputDialog("Dit zijn de letters: J, E, P, T, O. Welk woord is dit?");
+            if (woord.contains("topje") || (woord.contains("Topje")))
             {
                 JOptionPane.showMessageDialog(null, "Goedzo! dat is het juiste woord.");
 

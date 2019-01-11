@@ -173,6 +173,12 @@
         if (tile.getImage().toString().contains("letterP")){
             getWorld().removeObject(tile);
         LevelSelector1.heeftP = true;}
+        if (tile.getImage().toString().contains("letterJ")){
+            getWorld().removeObject(tile);
+        LevelSelector1.heeftJ = true;}
+        if (tile.getImage().toString().contains("letterE")){
+            getWorld().removeObject(tile);
+        LevelSelector1.heeftE = true;}
             if (tile.getImage().toString().contains("signExit")){
                 if (LevelSelector1.huidigLevel == 1)
                 {
@@ -183,6 +189,14 @@
                     LevelSelector1.level3A = true;
                 }
                 if (LevelSelector1.huidigLevel == 3)
+                {
+                    LevelSelector1.level4A = true;
+                }
+                if (LevelSelector1.huidigLevel == 4)
+                {
+                    LevelSelector1.level5A = true;
+                }
+                if (LevelSelector1.huidigLevel == 5)
                 {
                     LevelSelector1.woordA = true;
                 }

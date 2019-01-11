@@ -20,7 +20,7 @@ public class DemoWorld extends World {
     public DemoWorld() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1, false);
-        this.setBackground("bg.png");
+        this.setBackground("vogeltje.png");
 
         int[][] map = {
             {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
@@ -74,6 +74,11 @@ public class DemoWorld extends World {
 
     @Override
     public void act() {
+        if (LevelSelector1.heeftT == true){addObject (new THUD(), 300,50);}
+        if (LevelSelector1.heeftO == true){addObject (new OHUD(), 350,50);}
+        if (LevelSelector1.heeftP == true){addObject (new PHUD(), 400,50);}
+        if (LevelSelector1.heeftJ == true){addObject (new JHUD(), 450,50);}
+        if (LevelSelector1.heeftE == true){addObject (new EHUD(), 500,50);}
         ce.update();
     }
 

@@ -23,8 +23,8 @@ public class MyWorld extends World {
     public MyWorld() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1, false);
-        
-        this.setBackground("bg.png");
+        this.setBackground("vogeltje.png");
+        //this.setBackground("bg.png");
         coinX = 50;
        // levelstring = JOptionPane.showInputDialog("Kies een "
        //         + "level (1 of 2)");
@@ -154,6 +154,8 @@ if (level == 1){
         if (LevelSelector1.heeftT == true){addObject (new THUD(), 300,50);}
         if (LevelSelector1.heeftO == true){addObject (new OHUD(), 350,50);}
         if (LevelSelector1.heeftP == true){addObject (new PHUD(), 400,50);}
+        if (LevelSelector1.heeftP == true){addObject (new JHUD(), 450,50);}
+        if (LevelSelector1.heeftP == true){addObject (new EHUD(), 500,50);}
        
     }
 
