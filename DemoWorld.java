@@ -20,7 +20,7 @@ public class DemoWorld extends World {
     public DemoWorld() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1, false);
-        this.setBackground("vogeltje.png");
+        this.setBackground("bg_gras.png");
 
         int[][] map = {
             {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
@@ -70,16 +70,39 @@ public class DemoWorld extends World {
         // Force act zodat de camera op de juist plek staat.
         camera.act();
         hero.act();
+        if (BeginLevel.daarIsDeT == true)
+        {
+            addObject (new THUD(), 300, 50);
+        }
+        if (BeginLevel.daarIsDeO == true)
+        {
+            addObject (new OHUD(), 350, 50);
+        }
+        if (BeginLevel.daarIsDeP == true)
+        {
+            addObject (new PHUD(), 400, 50);
+        }
+        if (BeginLevel.daarIsDeJ == true)
+        {
+            addObject (new JHUD(), 450, 50);
+        }
+        if (BeginLevel.daarIsDeE == true)
+        {
+            addObject (new EHUD(), 500, 50);
+        }
     }
 
     @Override
     public void act() {
-        if (LevelSelector1.heeftT == true){addObject (new THUD(), 300,50);}
-        if (LevelSelector1.heeftO == true){addObject (new OHUD(), 350,50);}
-        if (LevelSelector1.heeftP == true){addObject (new PHUD(), 400,50);}
-        if (LevelSelector1.heeftJ == true){addObject (new JHUD(), 450,50);}
-        if (LevelSelector1.heeftE == true){addObject (new EHUD(), 500,50);}
-        ce.update();
-    }
+       if (LevelSelector1.heeftT == true && BeginLevel.tIsEr == false){addObject (new THUD(), 300,50);
+        BeginLevel.tIsEr = true; BeginLevel.daarIsDeT = true;}
+        if (LevelSelector1.heeftO == true && BeginLevel.oIsEr == false) {addObject (new OHUD(), 350,50);
+        BeginLevel.oIsEr = true; BeginLevel.daarIsDeO = true;}
+        if (LevelSelector1.heeftP == true &&BeginLevel. pIsEr == false){addObject (new PHUD(), 400,50);
+        BeginLevel.pIsEr = true; BeginLevel.daarIsDeP = true;}
+        if (LevelSelector1.heeftJ == true && BeginLevel.jIsEr == false){addObject (new JHUD(), 450,50);
+        BeginLevel.jIsEr = true; BeginLevel.daarIsDeJ = true;}
+        if (LevelSelector1.heeftE == true && BeginLevel.eIsEr == false){addObject (new EHUD(), 500,50);
+        BeginLevel.eIsEr = true; BeginLevel.daarIsDeE = true;
 
-}
+}}}

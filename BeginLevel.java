@@ -12,6 +12,18 @@ public class BeginLevel extends World {
     public static boolean firstStart = true;
     public static boolean gameoverWorld;
     public static int coinX = 50;
+    public static boolean tIsEr;
+    public static boolean oIsEr;
+    
+    public static boolean pIsEr;
+    public static boolean jIsEr;
+    public static boolean eIsEr;
+    public static boolean daarIsDeT;
+    public static boolean daarIsDeO;
+    
+    public static boolean daarIsDeP;
+    public static boolean daarIsDeJ;
+    public static boolean daarIsDeE;
     static GreenfootSound BGM = new GreenfootSound("bgm.wav");
 
     private CollisionEngine ce;
@@ -23,7 +35,7 @@ public class BeginLevel extends World {
     public BeginLevel() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1, false);
-        this.setBackground("vogeltje.png");
+        this.setBackground("bg_gras.png");
         //this.setBackground("bg.png");
         coinX = 50;
        // levelstring = JOptionPane.showInputDialog("Kies een "
@@ -86,6 +98,26 @@ public class BeginLevel extends World {
         // Toevoegen van de mover instantie of een extentie hiervan
         ce.addCollidingMover(hero);
         prepare();
+        if (BeginLevel.daarIsDeT == true)
+        {
+            addObject (new THUD(), 300, 50);
+        }
+        if (BeginLevel.daarIsDeO == true)
+        {
+            addObject (new OHUD(), 350, 50);
+        }
+        if (BeginLevel.daarIsDeP == true)
+        {
+            addObject (new PHUD(), 400, 50);
+        }
+        if (BeginLevel.daarIsDeJ == true)
+        {
+            addObject (new JHUD(), 450, 50);
+        }
+        if (BeginLevel.daarIsDeE == true)
+        {
+            addObject (new EHUD(), 500, 50);
+        }
     }
     }
 
@@ -98,11 +130,19 @@ public class BeginLevel extends World {
             coinX += 50;
             Hero.newCoin = false;
         }
-        if (LevelSelector1.heeftT == true){addObject (new THUD(), 300,50);}
-        if (LevelSelector1.heeftO == true){addObject (new OHUD(), 350,50);}
-        if (LevelSelector1.heeftP == true){addObject (new PHUD(), 400,50);}
-        if (LevelSelector1.heeftJ == true){addObject (new JHUD(), 450,50);}
-        if (LevelSelector1.heeftE == true){addObject (new EHUD(), 500,50);}
+        if (LevelSelector1.heeftT == true && tIsEr == false){addObject (new THUD(), 300,50);
+        tIsEr = true; BeginLevel.daarIsDeT = true;}
+        if (LevelSelector1.heeftO == true && oIsEr == false) {addObject (new OHUD(), 350,50);
+        oIsEr = true; BeginLevel.daarIsDeO = true;}
+        if (LevelSelector1.heeftP == true && pIsEr == false){addObject (new PHUD(), 400,50);
+        pIsEr = true; BeginLevel.daarIsDeP = true;}
+        if (LevelSelector1.heeftJ == true && jIsEr == false){addObject (new JHUD(), 450,50);
+        jIsEr = true; BeginLevel.daarIsDeJ = true;}
+        if (LevelSelector1.heeftE == true && eIsEr == false){addObject (new EHUD(), 500,50);
+        eIsEr = true; BeginLevel.daarIsDeE = true;}
+        
+        
+      
         
         
        

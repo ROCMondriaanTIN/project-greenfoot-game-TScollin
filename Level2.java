@@ -23,7 +23,7 @@ public class Level2 extends World {
     public Level2() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1, false);
-        this.setBackground("vogeltje.png");
+        this.setBackground("bg_woestijn.png");
         //this.setBackground("bg.png");
         coinX = 50;
        // levelstring = JOptionPane.showInputDialog("Kies een "
@@ -51,6 +51,26 @@ public class Level2 extends World {
 
         
 if (level == 1){
+    if (BeginLevel.daarIsDeT == true)
+        {
+            addObject (new THUD(), 300, 50);
+        }
+        if (BeginLevel.daarIsDeO == true)
+        {
+            addObject (new OHUD(), 350, 50);
+        }
+        if (BeginLevel.daarIsDeP == true)
+        {
+            addObject (new PHUD(), 400, 50);
+        }
+        if (BeginLevel.daarIsDeJ == true)
+        {
+            addObject (new JHUD(), 450, 50);
+        }
+        if (BeginLevel.daarIsDeE == true)
+        {
+            addObject (new EHUD(), 500, 50);
+        }
         // Declareren en initialiseren van de TileEngine klasse om de map aan de world toe te voegen
         TileEngine te = new TileEngine(this, 60, 60, map);
         // Declarenre en initialiseren van de camera klasse met de TileEngine klasse 
@@ -103,12 +123,17 @@ if (level == 1){
             Hero.newCoin = false;
         }
        
-       if (LevelSelector1.heeftT == true){addObject (new THUD(), 300,50);}
-        if (LevelSelector1.heeftO == true){addObject (new OHUD(), 350,50);}
-        if (LevelSelector1.heeftP == true){addObject (new PHUD(), 400,50);}
-        if (LevelSelector1.heeftJ == true){addObject (new JHUD(), 450,50);}
-        if (LevelSelector1.heeftE == true){addObject (new EHUD(), 500,50);}
-    }
+ if (LevelSelector1.heeftT == true && BeginLevel.tIsEr == false){addObject (new THUD(), 300,50);
+        BeginLevel.tIsEr = true; BeginLevel.daarIsDeT = true;}
+        if (LevelSelector1.heeftO == true && BeginLevel.oIsEr == false) {addObject (new OHUD(), 350,50);
+        BeginLevel.oIsEr = true; BeginLevel.daarIsDeO = true;}
+        if (LevelSelector1.heeftP == true &&BeginLevel. pIsEr == false){addObject (new PHUD(), 400,50);
+        BeginLevel.pIsEr = true; BeginLevel.daarIsDeP = true;}
+        if (LevelSelector1.heeftJ == true && BeginLevel.jIsEr == false){addObject (new JHUD(), 450,50);
+        BeginLevel.jIsEr = true; BeginLevel.daarIsDeJ = true;}
+        if (LevelSelector1.heeftE == true && BeginLevel.eIsEr == false){addObject (new EHUD(), 500,50);
+        BeginLevel.eIsEr = true; BeginLevel.daarIsDeE = true;}}
+    
 
     /**
      * Prepare the world for the  kopkpjrpklmrmpkmpkldstart of the program.
